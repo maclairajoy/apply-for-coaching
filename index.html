@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply to Train — Claira Joy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital@0;1&family=Courier+Prime:ital@0;1&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#6B1A2A;
+    --burgundy:#A01830;
+    --linen:#FBFAF8;
+    --midnight:#1A1210;
+    --verdigris:#4A7C6F;
+    --hunter:#2D4A3E;
+    --midnight-65: rgba(26,18,16,0.65);
+    --midnight-45: rgba(26,18,16,0.45);
+    --midnight-25: rgba(26,18,16,0.18);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--linen);
+    color:var(--midnight);
+    font-family:'Courier Prime', monospace;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:640px;
+    margin:0 auto;
+    padding:64px 28px 96px;
+  }
+
+  /* ---- Header ---- */
+  .eyebrow{
+    font-family:'Instrument Serif', serif;
+    font-size:12px;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    color:var(--burgundy);
+    margin:0 0 22px;
+  }
+
+  h1{
+    font-family:'Libre Baskerville', serif;
+    font-weight:700;
+    font-size:clamp(30px,5.5vw,42px);
+    line-height:1.18;
+    letter-spacing:0.01em;
+    margin:0 0 18px;
+    color:var(--midnight);
+  }
+
+  .lede{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:20px;
+    line-height:1.5;
+    color:var(--wine);
+    margin:0 0 36px;
+    max-width:480px;
+  }
+
+  .rule{
+    height:1px;
+    background:var(--midnight);
+    opacity:0.15;
+    margin:36px 0;
+    border:none;
+  }
+
+  .intro-copy{
+    font-size:14px;
+    line-height:1.8;
+    color:var(--midnight-65);
+    margin:0 0 8px;
+    max-width:520px;
+  }
+
+  /* ---- Form ---- */
+  form{margin-top:8px;}
+
+  .field{
+    margin-bottom:30px;
+  }
+
+  label{
+    display:block;
+    font-family:'Instrument Serif', serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--hunter);
+    margin-bottom:10px;
+  }
+
+  label .req{
+    color:var(--burgundy);
+    margin-left:4px;
+  }
+
+  .hint{
+    font-family:'Courier Prime', monospace;
+    font-size:11.5px;
+    color:var(--midnight-45);
+    margin:6px 0 0;
+    line-height:1.6;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--midnight-25);
+    padding:10px 2px;
+    font-family:'Courier Prime', monospace;
+    font-size:15px;
+    color:var(--midnight);
+    transition:border-color 0.2s ease;
+    outline:none;
+  }
+
+  textarea{
+    resize:vertical;
+    min-height:96px;
+    line-height:1.6;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus{
+    border-bottom:1.5px solid var(--wine);
+  }
+
+  ::placeholder{
+    color:var(--midnight-45);
+    font-style:italic;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  /* Radio / checkbox groups */
+  .choice-group{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .choice{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    cursor:pointer;
+  }
+
+  .choice input{
+    appearance:none;
+    width:16px;
+    height:16px;
+    min-width:16px;
+    margin-top:2px;
+    border:1.3px solid var(--midnight-45);
+    border-radius:50%;
+    position:relative;
+    cursor:pointer;
+  }
+
+  .choice input[type="checkbox"]{
+    border-radius:3px;
+  }
+
+  .choice input:checked{
+    border-color:var(--wine);
+    background:var(--wine);
+  }
+
+  .choice input[type="radio"]:checked::after{
+    content:"";
+    position:absolute;
+    top:3px;left:3px;right:3px;bottom:3px;
+    border-radius:50%;
+    background:var(--linen);
+  }
+
+  .choice input[type="checkbox"]:checked::after{
+    content:"";
+    position:absolute;
+    top:1px;left:4.5px;
+    width:5px;height:9px;
+    border-right:2px solid var(--linen);
+    border-bottom:2px solid var(--linen);
+    transform:rotate(40deg);
+  }
+
+  .choice span{
+    font-size:14.5px;
+    color:var(--midnight-65);
+    line-height:1.45;
+    padding-top:0.5px;
+  }
+
+  select{
+    cursor:pointer;
+    -webkit-appearance:none;
+    appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231A1210' stroke-width='1.4' fill='none' opacity='0.5'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 4px center;
+    padding-right:20px;
+  }
+
+  /* ---- Submit ---- */
+  .submit-row{
+    margin-top:48px;
+  }
+
+  button[type="submit"]{
+    width:100%;
+    background:var(--midnight);
+    color:var(--linen);
+    border:none;
+    font-family:'Libre Baskerville', serif;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:18px 24px;
+    cursor:pointer;
+    transition:background 0.2s ease;
+  }
+
+  button[type="submit"]:hover{
+    background:var(--wine);
+  }
+
+  .fine-print{
+    font-size:11.5px;
+    color:var(--midnight-45);
+    line-height:1.7;
+    margin-top:18px;
+    text-align:center;
+  }
+
+  /* ---- Footer / Calendly note ---- */
+  .next-step{
+    margin-top:56px;
+    padding-top:36px;
+    border-top:1px solid rgba(26,18,16,0.15);
+  }
+
+  .next-step .eyebrow{margin-bottom:14px;}
+
+  .next-step p{
+    font-size:14px;
+    line-height:1.8;
+    color:var(--midnight-65);
+    max-width:480px;
+    margin:0 0 22px;
+  }
+
+  .cal-link{
+    display:inline-block;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:18px;
+    color:var(--wine);
+    text-decoration:none;
+    border-bottom:1px solid var(--wine);
+    padding-bottom:2px;
+  }
+
+  .cal-link:hover{ color:var(--burgundy); border-color:var(--burgundy); }
+
+  .brandmark{
+    margin-top:80px;
+    text-align:center;
+    font-family:'Libre Baskerville', serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.4em;
+    color:var(--midnight);
+    opacity:0.3;
+  }
+
+  @media (max-width:480px){
+    .wrap{padding:48px 20px 72px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <h1>Apply to train with Claira.</h1>
+  <p class="lede">For women who take their bodies & health seriously.</p>
+
+  <p class="intro-copy">I read every application myself, and I only take on a small number of clients at a time so the coaching stays specific to you. Tell me where you are and where you want to go — I'll follow up personally within a few days.</p>
+
+  <hr class="rule">
+
+  <form id="applyForm" action="#" method="POST">
+
+    <div class="field">
+      <label for="name">Name <span class="req">*</span></label>
+      <input type="text" id="name" name="name" placeholder="Full name" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email <span class="req">*</span></label>
+      <input type="email" id="email" name="email" placeholder="you@email.com" required>
+    </div>
+
+    <div class="field">
+      <label for="location">City / Location</label>
+      <input type="text" id="location" name="location" placeholder="Where are you based?">
+    </div>
+
+    <div class="field">
+      <label for="goal">What are your current goals? <span class="req">*</span></label>
+      <textarea id="goal" name="goal" placeholder="Tell me about what you are hoping to build — strength, confidence, better relationship with food, etc." required></textarea>
+    </div>
+
+    <div class="field">
+      <label>Training history</label>
+      <div class="choice-group">
+        <label class="choice">
+          <input type="radio" name="experience" value="new">
+          <span>New to structured strength training</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="experience" value="some">
+          <span>Some experience, inconsistent or self-guided</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="experience" value="experienced">
+          <span>Experienced lifter, looking to refine and progress</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>What are you most interested in? <span class="req">*</span></label>
+      <div class="choice-group">
+        <label class="choice">
+          <input type="radio" name="interest" value="strength" required>
+          <span>Strength coaching</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="interest" value="nutrition">
+          <span>Nutrition coaching</span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="interest" value="both">
+          <span>Both, combined</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="availability">Weekly availability for training</label>
+      <select id="availability" name="availability">
+        <option value="" disabled selected>Select one</option>
+        <option value="2x">2x per week</option>
+        <option value="3x">3x per week</option>
+        <option value="4x">4x per week</option>
+        <option value="5x+">5x+ per week</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="budget">Monthly coaching budget</label>
+      <select id="budget" name="budget">
+        <option value="" disabled selected>Select one</option>
+        <option value="under-150">Under $150</option>
+        <option value="150-300">$150 – $300</option>
+        <option value="300-500">$300 – $500</option>
+        <option value="500+">$500+</option>
+      </select>
+      <p class="hint">This helps me recommend the right level of coaching — no pressure, just clarity.</p>
+    </div>
+
+    <div class="field">
+      <label for="anything">Anything else I should know?</label>
+      <textarea id="anything" name="anything" placeholder="Injuries, timelines, what's brought you here now..."></textarea>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit">Submit Application</button>
+      <p class="fine-print">Thank you for applying, I'll be in touch soon! Expect a reply within 2–3 days.</p>
+    </div>
+
+  </form>
+
+  <div class="brandmark">CLAIRA JOY</div>
+
+</div>
+
+</body>
+</html>
